@@ -356,19 +356,17 @@ on boot
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
     chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
-    # Set Interactive - hispeed_freq -
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    #write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1060000
-    chmod 0644 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-
     # Set - Gamma Adjustment -
-    #write /sys/devices/platform/omapdss/manager0/gamma 6
+    write /sys/devices/platform/omapdss/manager0/gamma 6
+
+    # Set - Contrast -
+    write /sys/module/panel_s6e8aa0/parameters/contrast -14
 
     # Set - Power aware SMP scheduler -
-    write /sys/devices/system/cpu/sched_mc_power_savings 0
+    write /sys/devices/system/cpu/sched_mc_power_savings 1
 
     # Set - Content Adaptive Brightness -
-    write /sys/class/backlight/s6e8aa0/acl_set 0
+    write /sys/class/backlight/s6e8aa0/acl_set 1
 
     chown system system /sys/class/timed_output/vibrator/enable
     chown system system /sys/class/leds/keyboard-backlight/brightness
