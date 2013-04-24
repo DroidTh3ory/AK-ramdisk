@@ -69,6 +69,13 @@ echo 1 > /sys/block/mmcblk0/queue/iosched/low_latency;
 ## N4 and N10 cfq adds tl, which was hardcoded previously
 echo 300 > /sys/block/mmcblk0/queue/iosched/target_latency;
 
+
+    elif [ $scheduler == "bfq" ]; then
+
+# bfq tweaks
+echo 1 > /sys/block/mmcblk0/queue/iosched/back_seek_penalty;
+echo 0 > /sys/block/mmcblk0/queue/iosched/slice_idle;
+
     fi;
   fi;
 # loop forever independently
